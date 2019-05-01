@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">TiketSaya</string>
+    <string name="slogan">Wisata Jadi Lebih Asyik!</string>
+    <string name="signin">SIGN IN</string>
+    <string name="newacc">NEW ACCOUNT</string>
+    <string name="username_label">Username</string>
+    <string name="password_label">Password</string>
+    <string name="nama_label">Name</string>
+    <string name="bio_label">Bio</string>
+    <string name="email_label">Email Address</string>
+    <string name="btn_continue">Continue</string>
+    <string name="btn_explore">Explore Now</string>
+
+    <string name="slogan_regis_one">Please fill up the forms below \nfor informations</string>
+    <string name="slogan_regis_two">Let the world knows yourself\nmore better and ever</string>
+</resources>
