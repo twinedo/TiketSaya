@@ -47,6 +47,7 @@ public class SuccessBuyTicketAct extends AppCompatActivity {
             public void onClick(View v) {
                 Intent gotoprofile = new Intent(SuccessBuyTicketAct.this, MyProfileAct.class);
                 startActivity(gotoprofile);
+                finish();
             }
         });
         btn_my_dashboard.setOnClickListener(new View.OnClickListener() {
@@ -54,8 +55,15 @@ public class SuccessBuyTicketAct extends AppCompatActivity {
             public void onClick(View v) {
                 Intent gotodashboard = new Intent(SuccessBuyTicketAct.this, HomeActivity.class);
                 startActivity(gotodashboard);
+                finish();
             }
         });
+
+
+    }
+
+    @Override
+    public void onBackPressed() {
 
     }
 }

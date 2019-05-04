@@ -1,9 +1,11 @@
 package com.example.tiketsaya;
 
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +16,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -69,7 +73,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 .child("Users").child(username_key_new);
         storage = FirebaseStorage.getInstance().getReference().child("Photousers")
                 .child(username_key_new);
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 xnama_lengkap.setText(dataSnapshot.child("nama_lengkap").getValue().toString());
@@ -102,6 +106,7 @@ public class EditProfileActivity extends AppCompatActivity {
                         dataSnapshot.getRef().child("username").setValue(xusername.getText().toString());
                         dataSnapshot.getRef().child("password").setValue(xpassword.getText().toString());
                         dataSnapshot.getRef().child("email_address").setValue(xemail_address.getText().toString());
+                        Toast.makeText(getApplicationContext(),"Data berhasil diubah",Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -110,7 +115,6 @@ public class EditProfileActivity extends AppCompatActivity {
                     }
                 });
 
-                //validasi utk file (apkah ada?
                 if (photo_location != null){
                     final StorageReference storageReference=storage.child(System.currentTimeMillis()+"."+
                             getFileExtension(photo_location));
@@ -130,14 +134,12 @@ public class EditProfileActivity extends AppCompatActivity {
                             }).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                            //berpindah act
+                            //Toast.makeText(getApplicationContext(),"Mengganti Foto...",Toast.LENGTH_SHORT).show();
+
                             Intent gotoProfile = new Intent(EditProfileActivity.this, MyProfileAct.class);
                             startActivity(gotoProfile);
                         }
                     });
-                }else{
-                    Intent gotoProfile = new Intent(EditProfileActivity.this, MyProfileAct.class);
-                    startActivity(gotoProfile);
                 }
             }
         });
@@ -146,6 +148,14 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 findPhoto();
+                //validasi utk file (apkah ada?
+            }
+        });
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
     }

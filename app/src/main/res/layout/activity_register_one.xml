@@ -197,14 +197,9 @@
             android:layout_weight="3">
 
             <Button
+                style="@style/btn_blue_primary"
                 android:id="@+id/button_continue"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:background="@drawable/bg_btn_blue_primary"
-                android:fontFamily="@font/mmedium"
-                android:text="@string/btn_continue"
-                android:textColor="#FFF"
-                android:textSize="22sp" />
+                android:text="@string/btn_continue"/>
 
 
         </LinearLayout>

@@ -17,7 +17,6 @@ public class SuccessRegisterAct extends AppCompatActivity {
     TextView success_reg_title, success_reg_subtitle;
     Animation app_splash, btt, ttb;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +32,7 @@ public class SuccessRegisterAct extends AppCompatActivity {
             public void onClick(View v) {
                 Intent gotoHome = new Intent(SuccessRegisterAct.this, HomeActivity.class);
                 startActivity(gotoHome);
+                finish();
             }
         });
 
@@ -46,6 +46,11 @@ public class SuccessRegisterAct extends AppCompatActivity {
         icon_success.startAnimation(app_splash);
         success_reg_title.startAnimation(ttb);
         success_reg_subtitle.startAnimation(ttb);
+
+    }
+
+    @Override
+    public void onBackPressed() {
 
     }
 }

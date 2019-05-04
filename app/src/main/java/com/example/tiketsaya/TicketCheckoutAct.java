@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -30,6 +31,8 @@ public class TicketCheckoutAct extends AppCompatActivity {
     Integer valuetotalharga= 0;
     Integer valuehargatiket= 0;
     ImageView notice_uang;
+
+    LinearLayout btn_back;
 
     DatabaseReference reference, reference2
             ,reference3, reference4;
@@ -64,6 +67,7 @@ public class TicketCheckoutAct extends AppCompatActivity {
         textjumlahtiket = findViewById(R.id.textjumlahtiket);
         button_buy_ticket = findViewById(R.id.button_buy_ticket);
         notice_uang = findViewById(R.id.notice_uang);
+        btn_back = findViewById(R.id.btn_back);
 
         nama_wisata = findViewById(R.id.nama_wisata);
         lokasi = findViewById(R.id.lokasi);
@@ -208,6 +212,13 @@ public class TicketCheckoutAct extends AppCompatActivity {
             }
         });
 
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     public void getUsernameLocal(){

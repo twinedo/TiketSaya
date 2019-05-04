@@ -5,8 +5,10 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,6 +21,7 @@ public class MyTicketDetailAct extends AppCompatActivity {
     DatabaseReference reference;
     TextView xnama_wisata, xlokasi, xtime_wisata, xdate_wisata, xketentuan;
     LinearLayout btn_back;
+    Button button_refund;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,9 @@ public class MyTicketDetailAct extends AppCompatActivity {
         xtime_wisata = findViewById(R.id.xtime_wisata);
         xdate_wisata = findViewById(R.id.xdate_wisata);
         xketentuan = findViewById(R.id.xketentuan);
+        button_refund = findViewById(R.id.button_refund);
+
+
 
         btn_back = findViewById(R.id.btn_back);
 
@@ -56,12 +62,17 @@ public class MyTicketDetailAct extends AppCompatActivity {
             }
         });
 
+        button_refund.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Fitur ini belum tersedia",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent gotoprofile = new Intent(MyTicketDetailAct.this, MyProfileAct.class);
-                startActivity(gotoprofile   );
+                onBackPressed();
             }
         });
     }

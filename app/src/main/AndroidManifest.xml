@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".EditProfileActivity"></activity>
         <activity android:name=".MyTicketDetailAct" />
-        <activity android:name=".MyProfileAct" />
+        <activity android:name=".MyProfileAct"/>
         <activity android:name=".SuccessBuyTicketAct" />
         <activity android:name=".TicketCheckoutAct" />
         <activity android:name=".TicketDetailAct" />

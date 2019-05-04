@@ -91,8 +91,7 @@ public class TicketDetailAct extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent gotohome = new Intent(TicketDetailAct.this, HomeActivity.class);
-                startActivity(gotohome);
+                onBackPressed();
             }
         });
     }

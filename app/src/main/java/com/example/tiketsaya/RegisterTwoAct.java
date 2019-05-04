@@ -102,9 +102,13 @@ public class RegisterTwoAct extends AppCompatActivity {
                             startActivity(gotosuccess);
                         }
                     });
-                }/*else{ //kalo gk pake pic, user pake pic default. caranya gimana
-                    pic_photo_regis_user.setImageURI(icon_nopic);
-                }*/
+                }else{ //kalo gk pake pic, user pake pic default. caranya gimana
+                    reference.getRef().child("url_photo_profile").setValue("https://firebasestorage.googleapis.com/v0/b/tiketsaya-54964.appspot.com/o/Photousers%2Ficon_nopic.png?alt=media&token=240b4314-fb4c-46ee-bbbf-417bc38c8363");
+                    reference.getRef().child("nama_lengkap").setValue(nama_lengkap.getText().toString());
+                    reference.getRef().child("bio").setValue(bio.getText().toString());
+                    Intent gotosuccess =new Intent(RegisterTwoAct.this, SuccessRegisterAct.class);
+                    startActivity(gotosuccess);
+                }
             }
         });
 
@@ -112,8 +116,7 @@ public class RegisterTwoAct extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent gotoSignin = new Intent(RegisterTwoAct.this, RegisterOneAct.class);
-                startActivity(gotoSignin);
+                onBackPressed();
             }
         });
     }

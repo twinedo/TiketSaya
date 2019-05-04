@@ -60,10 +60,9 @@ public class MyProfileAct extends AppCompatActivity {
         myticket_place.setLayoutManager(new LinearLayoutManager(this));
         list = new ArrayList<MyTicket>();
 
-
         reference = FirebaseDatabase.getInstance()
                 .getReference().child("Users").child(username_key_new);
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 nama_lengkap.setText(dataSnapshot.child("nama_lengkap").getValue().toString());
@@ -119,8 +118,8 @@ public class MyProfileAct extends AppCompatActivity {
         btn_back_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent gotoHome = new Intent(MyProfileAct.this, HomeActivity.class);
-                startActivity(gotoHome);
+                Intent gotohome = new Intent(MyProfileAct.this, HomeActivity.class);
+                startActivity(gotohome);
             }
         });
 
@@ -145,4 +144,8 @@ public class MyProfileAct extends AppCompatActivity {
         username_key_new = sharedPreferences.getString(username_key, "");
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
 }
